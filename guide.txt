@@ -23,3 +23,12 @@ Team
 $ rails g scaffold Team name:string
 $ rails g migration addUserIdToTeams user_id:integer
 $ rails db:migrate
+
+
+While we are at it, our Team model is going to be what we use Vue.js for. To do so requires a few dependencies. Go ahead and add the following via yarn
+yarn add vue-turbolinks
+yarn add vue-resource
+
+
+Models
+
