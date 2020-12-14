@@ -14,3 +14,12 @@ rails new projekt --webpack=vue
 
 $ rails generate devise:install
 $ rails generate devise User
+
+
+Projects
+$ rails g scaffold Project name:string description:text team_id:integer user_id:integer
+
+Team
+$ rails g scaffold Team name:string
+$ rails g migration addUserIdToTeams user_id:integer
+$ rails db:migrate
