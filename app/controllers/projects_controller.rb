@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.all.order("created_at DESC")
   end
 
   # GET /projects/1
@@ -14,17 +15,19 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @project = current_user.projects.build
+    @teams = Team.where('id = ?', current_user.team_id)
   end
 
   # GET /projects/1/edit
   def edit
+    @teams = current_user.teams
   end
 
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.build(project_params)
 
     respond_to do |format|
       if @project.save
@@ -69,6 +72,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :desciption)
+      params.require(:project).permit(:name, :desciption, :team_id)
     end
 end

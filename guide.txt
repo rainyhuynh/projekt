@@ -1,4 +1,5 @@
 link: https://web-crunch.com/posts/lets-build-with-ruby-on-rails-project-management-app
+https://github.com/justalever/projekt/tree/master/app/controllers
 
 rails new projekt --webpack=vue
 
@@ -13,7 +14,10 @@ rails new projekt --webpack=vue
 
 
 $ rails generate devise:install
+$ rails g devise:views
 $ rails generate devise User
+
+rails g public_activity:migration
 
 
 Projects
@@ -30,5 +34,7 @@ yarn add vue-turbolinks
 yarn add vue-resource
 
 
-Models
+//Guard Livereload - Handy for updating changes when hitting save. The browser automatically refreshes.
+//Add guard definition to your Guardfile by running this command:
 
+guard init livereload
