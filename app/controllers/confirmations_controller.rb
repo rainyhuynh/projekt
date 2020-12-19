@@ -1,9 +1,9 @@
-class ConfirmationController < Devise::ConfirmationController
+class ConfirmationsController < Devise::ConfirmationsController
     # PUT /resource/confirmation
     def update 
         with_unconfirmed_confirmable do 
             if @confirmable.has_no_password?
-                @confirmable.attempt_set_password(params[:user])
+                @confirmable.attemp_set_password(params[:user])
                 if @confirmable.valid? and @confirmable.password_match?
                     do_confirm
                 else
